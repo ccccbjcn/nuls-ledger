@@ -5,6 +5,7 @@ export enum SupportedCoin {
   NULSTEST = 261,
 }
 
+export type AddressType = 0x1 | 0x2 | 0x3;
 /**
  * Defines an Account to be used when communicating with ledger
  */
@@ -14,7 +15,15 @@ export class LedgerAccount {
   private _index: number            = 0;
   private _change: boolean          = false;
   private _coinIndex: SupportedCoin = SupportedCoin.NULS;
+  private _addressType: AddressType = 0x1;
 
+  public get addressType() {
+    return this._addressType;
+  }
+
+  public set addressType(addressType: AddressType) {
+    this._addressType = addressType;
+  }
   // tslint:enable variable-name
 
   /**
@@ -70,6 +79,15 @@ export class LedgerAccount {
     const retBuf = Buffer.alloc(pathArray.length * 4);
     pathArray.forEach((r, idx) => retBuf.writeUInt32BE(r, idx * 4));
     return retBuf;
+  }
+
+  public toExchangeBuff() {
+    const path = this.derivePath();
+    return Buffer.concat([
+      Buffer.alloc(1).fill(path.length / 4),
+      Buffer.alloc(1).fill(this.addressType),
+      path,
+    ]);
   }
 
   /**
