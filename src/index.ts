@@ -2,6 +2,7 @@ import { CommHandler} from 'dpos-ledger-api';
 import { LedgerAccount } from './LedgerAccount';
 
 export { CommHandler };
+export { LedgerAccount };
 
 export class NulsLedger  {
   /**
@@ -54,7 +55,7 @@ export class NulsLedger  {
   public async signTx(fromAccount: LedgerAccount, changeAccount: LedgerAccount, tx: Buffer) {
     const buffLength = new Buffer(2);
     buffLength.writeUInt16BE(tx.length, 0);
-    this.commHandler.exchange([
+    return this.commHandler.exchange([
       0x05,
       fromAccount.toExchangeBuff(),
       changeAccount ? changeAccount.toExchangeBuff() : 0x00,
