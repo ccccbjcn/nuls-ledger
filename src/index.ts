@@ -1,14 +1,14 @@
-import { CommHandler} from 'dpos-ledger-api';
 import { LedgerAccount } from './LedgerAccount';
+import { NulsCommHandler } from './NulsCommHandler';
 
-export { CommHandler };
+export { NulsCommHandler };
 export { LedgerAccount };
 
 export class NulsLedger  {
   /**
    * @param {CommHandler} commHandler communication handler
    */
-  constructor(private commHandler: CommHandler) {
+  constructor(private commHandler: NulsCommHandler) {
   }
   /**
    * Signs a message. The message can be passed as a string or buffer.

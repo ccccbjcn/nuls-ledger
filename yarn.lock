@@ -284,10 +284,10 @@ diff@^3.1.0, diff@^3.2.0:
   resolved "https://registry.yarnpkg.com/diff/-/diff-3.5.0.tgz#800c0dd1e0a8bfbc95835c202ad220fe317e5a12"
   integrity sha512-A46qtFgd+g7pDZinpnwiRJtxbC1hpgf0uzP3iG89scHk0AUC7A1TGxf5OiiOUv/JMZR8GOt8hL900hV0bOy5xA==
 
-dpos-ledger-api@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/dpos-ledger-api/-/dpos-ledger-api-3.0.0.tgz#109086e38c73be17e4e7dde8549843285a5cbb9e"
-  integrity sha512-B9UhcjlYqEmCbea7EwENZwey5eWb0LBEQqSZlGFb6+TIKEI7FuwfpwTwjIa1axeNCR0JPaJBnikxvjVaK85/Sw==
+dpos-ledger-api@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/dpos-ledger-api/-/dpos-ledger-api-3.0.1.tgz#3f8868a83efdf52263d884fe4ff850620646d916"
+  integrity sha512-CZ8nkVHjOYZQ/ZtbKCb5hgWy/JPsLmuDl59lE6cLVfVhXnpdpXOxsQPsxvkLCpxeUIAM7L98edxvju/sb0NRIA==
   dependencies:
     bip32-path "^0.4.2"
     crc "^3.5.0"
