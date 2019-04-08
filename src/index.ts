@@ -53,8 +53,8 @@ export class NulsLedger  {
    * ```
    */
   public async signTx(fromAccount: LedgerAccount, changeAccount: LedgerAccount, tx: Buffer) {
-    const buffLength = new Buffer(2);
-    buffLength.writeUInt16BE(tx.length, 0);
+    const buffLength = new Buffer(4);
+    buffLength.writeUInt32BE(tx.length, 0);
     return this.commHandler.exchange([
       0x05,
       fromAccount.toExchangeBuff(),
@@ -117,9 +117,9 @@ export class NulsLedger  {
     accountChange: LedgerAccount,
     buff: Buffer): Promise<Buffer> {
 
-    const buffLength = new Buffer(2);
+    const buffLength = new Buffer(4);
 
-    buffLength.writeUInt16BE(buff.length, 0);
+    buffLength.writeUInt32BE(buff.length, 0);
     const args        = await this.commHandler.exchange([
       signType, // sign
       0x1, // address type.

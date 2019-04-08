@@ -69,8 +69,8 @@ export class LedgerAccount {
       '44h',
       `${this._coinIndex}h`,
       `${this._account}h`,
-      this._change ? '1' : '0',
-      this._index,
+      this._change ? '1h' : '0h',
+      `${this._index}h`,
     ].join('/');
 
     const pathArray: number[] = bip32path.fromString(path)
