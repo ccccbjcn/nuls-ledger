@@ -1,10 +1,12 @@
 {
   "name": "nuls-ledger",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "install-nulsworldjs": "yarn add git://github.com/NULS-World/nulsworldjs.git#4f3bf8979c0e7e81f727f774df072d56960dda61; cd node_modules/nulsworldjs; npm i; npm run build"
+    "install-nulsworldjs": "yarn add git://github.com/NULS-World/nulsworldjs.git#4f3bf8979c0e7e81f727f774df072d56960dda61; cd node_modules/nulsworldjs; npm i; npm run build",
+    "transpile": "tsc -d --sourceMap"
   },
   "dependencies": {
     "bip32-path": "^0.4.2",

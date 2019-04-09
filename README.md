@@ -35,11 +35,11 @@ Transport.create()
 **Step 3**: Feed transport into the commHandler
 
 ```js
-import { CommHandler } from 'nuls-ledger';
+import { NulsCommHandler } from 'nuls-ledger';
 
 
 Transport.create()
-  .then((transportInstance) => new CommHandler(transportInstance))
+  .then((transportInstance) => new NulsCommHandler(transportInstance))
   .then((commHandler) => {/*...*/})
 
 ```
@@ -47,11 +47,11 @@ Transport.create()
 **Step 4**: Feed the commHandler instance into the library main class
 
 ```js
-import { CommHandler, NulsLedger } from 'nuls-ledger';
+import { NulsCommHandler, NulsLedger } from 'nuls-ledger';
 
 
 Transport.create()
-  .then((transportInstance) => new CommHandler(transportInstance))
+  .then((transportInstance) => new NulsCommHandler(transportInstance))
   .then((commHandler) => new NulsLedger(commHandler))
   .then((nulsLedger) => {/**
   
