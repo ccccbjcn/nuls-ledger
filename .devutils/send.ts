@@ -1,18 +1,20 @@
 import 'babel-polyfill';
 import TransportNodeHid from '@ledgerhq/hw-transport-node-hid';
 import { broadcast, Coin, prepare_remark_tx, Transaction, write_with_length } from 'nulsworldjs';
-import { NulsLedger } from '../src';
-import { LedgerAccount } from '../src/LedgerAccount';
+import { LedgerAccount, NulsCommHandler, NulsLedger } from '../src';
 
 async function doStuff() {
 
   const bit        = await prepare_remark_tx('Nsdz1hZVPnMYZ3D2RzrA448Bdcot6Xia', 'Hello NULS from Ledger');
   const transport  = await TransportNodeHid.create();
-  const nulsLedger = new NulsLedger(transport);
-  const acct       = await nulsLedger.getPubKey(new LedgerAccount());
+  const commHandler = new NulsCommHandler(transport);
+  const nulsLedger = new NulsLedger(commHandler);
+  const mainAcct   = new LedgerAccount();
+  const changeAcct = new LedgerAccount().change(true);
+  const acct       = await nulsLedger.getPubKey(mainAcct);
   bit.scriptSig    = null;
 
-  const signature = await nulsLedger.signTX(new LedgerAccount(), bit.serialize());
+  const signature = await nulsLedger.signTx(mainAcct, changeAcct, bit.serialize());
 
   const pubKeyBuf = Buffer.from(acct.publicKey, 'hex');
   const scriptSig = Buffer.alloc(

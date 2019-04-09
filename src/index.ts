@@ -27,14 +27,15 @@ export class NulsLedger  {
    *   });
    * ```
    */
-  public async signMSG(account: LedgerAccount, what: string | Buffer) {
+  public async signMSG(account: LedgerAccount, what: string | Buffer): Promise<Buffer> {
     const buffer: Buffer = typeof(what) === 'string' ? new Buffer(what, 'utf8') : what;
-    return this.commHandler.exchange([
+    const [signature] = await this.commHandler.exchange([
       0x06,
       account.toExchangeBuff(),
       0x00, // no change
       buffer,
     ]);
+    return signature;
   }
 
   /**
@@ -52,16 +53,17 @@ export class NulsLedger  {
    *   });
    * ```
    */
-  public async signTx(fromAccount: LedgerAccount, changeAccount: LedgerAccount, tx: Buffer) {
+  public async signTx(fromAccount: LedgerAccount, changeAccount: LedgerAccount, tx: Buffer): Promise<Buffer> {
     const buffLength = new Buffer(4);
     buffLength.writeUInt32BE(tx.length, 0);
-    return this.commHandler.exchange([
+    const [signature] = await this.commHandler.exchange([
       0x05,
       fromAccount.toExchangeBuff(),
       changeAccount ? changeAccount.toExchangeBuff() : 0x00,
       buffLength,
       tx,
     ]);
+    return signature;
   }
 
   /**
