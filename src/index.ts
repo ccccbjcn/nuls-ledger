@@ -35,6 +35,7 @@ export class NulsLedger  {
       0x00, // no change
       buffer,
     ]);
+    signature[0] = 0x30;
     return signature;
   }
 
@@ -63,6 +64,7 @@ export class NulsLedger  {
       buffLength,
       tx,
     ]);
+    signature[0] = 0x30;
     return signature;
   }
 

@@ -10,12 +10,15 @@
   },
   "dependencies": {
     "bip32-path": "^0.4.2",
-    "dpos-ledger-api": "3.0.1"
+    "bip66": "^1.1.5",
+    "dpos-ledger-api": "3.0.1",
+    "nulsworldjs": "git://github.com/NULS-World/nulsworldjs.git#4f3bf8979c0e7e81f727f774df072d56960dda61"
   },
   "devDependencies": {
     "@ledgerhq/hw-transport-node-hid": "^4.22.0",
     "@types/node": "^10.12.24",
     "babel-polyfill": "^6.26.0",
+    "sha.js": "^2.4.11",
     "ts-node": "^8.0.2",
     "tslint": "^5.12.1",
     "typescript": "^3.3.3"
