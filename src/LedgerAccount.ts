@@ -1,7 +1,7 @@
 import * as bip32path from 'bip32-path';
 
 export enum SupportedCoin {
-  NULS     = 8964,
+  NULS     = 1,
   NULSTEST = 261,
 }
 
